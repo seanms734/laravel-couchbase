@@ -332,7 +332,11 @@ class Connection extends \Illuminate\Database\Connection
      */
     protected function createConnection()
     {
-        $connectionString = sprintf('couchbase://%s:%s', $this->config['host'], $this->config['port']);
+        if($this->config['capella_url']) {
+            $connectionString = $this->config['capella_url'];
+        } else {
+            $connectionString = sprintf('couchbase://%s:%s', $this->config['host'], $this->config['port']);
+        }
         $options = new \Couchbase\ClusterOptions();
         $options->credentials($this->config['username'], $this->config['password']);
         $cluster = new \Couchbase\Cluster($connectionString, $options);
