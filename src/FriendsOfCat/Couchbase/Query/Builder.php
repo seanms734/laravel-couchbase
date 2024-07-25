@@ -509,7 +509,8 @@ class Builder extends BaseBuilder
                 $result = $this
                     ->connection
                     ->getBucket()
-                    ->defaultCollection()
+                    ->defaultScope()
+                    ->collection($this->type)
                     ->upsert($key, Grammar::removeMissingValue($value));
             }
         } else {
@@ -517,7 +518,8 @@ class Builder extends BaseBuilder
             $result = $this
                 ->connection
                 ->getBucket()
-                ->defaultCollection()
+                ->defaultScope()
+                ->collection($this->type)
                 ->upsert($this->keys, Grammar::removeMissingValue($values));
         }
 
