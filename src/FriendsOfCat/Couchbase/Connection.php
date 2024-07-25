@@ -332,8 +332,8 @@ class Connection extends \Illuminate\Database\Connection
      */
     protected function createConnection()
     {
-        if($this->config['capella_url']) {
-            $connectionString = $this->config['capella_url'];
+        if($this->config['connection_string']) {
+            $connectionString = $this->config['connection_string'];
         } else {
             $connectionString = sprintf('couchbase://%s:%s', $this->config['host'], $this->config['port']);
         }

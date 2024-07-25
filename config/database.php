@@ -4,7 +4,7 @@ return [
     'connections' => [
         'couchbase' => [
             'driver' => 'couchbase',
-            'capella_url' => env('COUCHBASE_CAPELLA_URL'),
+            'connection_string' => env('COUCHBASE_CONNECTION_STRING'),
             'port' => env('COUCHBASE_DB_PORT', 8091),
             'host' => env('COUCHBASE_DB_HOST', '127.0.0.1'),
             'bucket' => env('COUCHBASE_DB_BUCKET', 'bucket'),
