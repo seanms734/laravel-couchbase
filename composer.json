@@ -1,5 +1,5 @@
 {
-    "name": "friendsofcat/laravel-couchbase",
+    "name": "seanms734/laravel-couchbase",
     "description": "A Couchbase based Eloquent model and Query builder for Laravel",
     "keywords": ["laravel","eloquent","couchbase","database","model"],
     "homepage": "https://github.com/friendsoat/laravel-couchbase",
