@@ -11,6 +11,7 @@ use Couchbase\BucketManager;
 use Couchbase\BucketSettings;
 use Couchbase\QueryIndexManager;
 use Couchbase\CreateQueryPrimaryIndexOptions;
+use Couchbase\QueryScanConsistency;
 use FriendsOfCat\Couchbase\Events\QueryFired;
 use FriendsOfCat\Couchbase\Query\Builder as QueryBuilder;
 use FriendsOfCat\Couchbase\Query\Grammar as QueryGrammar;
@@ -28,7 +29,7 @@ class Connection extends \Illuminate\Database\Connection
     protected $metrics;
 
     /** @var int  default consistency */
-    protected $consistency = 2;
+    protected $consistency = QueryScanConsistency::REQUEST_PLUS;
 
     /**
      * The Couchbase connection handler.
