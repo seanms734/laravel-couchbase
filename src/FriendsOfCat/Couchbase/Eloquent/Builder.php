@@ -113,20 +113,21 @@ class Builder extends EloquentBuilder
 
         $rawResult = $query->getWithMeta($columns);
 
-        if (isset($rawResult->metaData()->metrics()['sortCount'])) {
-            $total = $rawResult->metaData()->metrics()['sortCount'];
-        } else {
-            if ($rawResult->metaData()->metrics()['resultCount'] === 0) {
-                $total = 0;
-            } else {
-                // should not go here...
-                $total = $query->getCountForPagination();
-            }
-        }
+        $total = $query->getCountForPagination();
+//        if (isset($rawResult->metaData()->metrics()['sortCount'])) {
+//            $total = $rawResult->metaData()->metrics()['sortCount'];
+//        } else {
+//            if ($rawResult->metaData()->metrics()['resultCount'] === 0) {
+//                $total = 0;
+//            } else {
+//                // should not go here...
+//                $total = $query->getCountForPagination();
+//            }
+//        }
         // If we actually found models we will also eager load any relationships that
         // have been specified as needing to be eager loaded, which will solve the
         // n+1 query issue for the developers to avoid running a lot of queries.
-        $models = $this->model->hydrate($rawResult->rows()->all())->all();
+        $models = $this->model->hydrate($rawResult->rows())->all();
 
         if (count($models) > 0) {
             $models = $builder->eagerLoadRelations($models);
